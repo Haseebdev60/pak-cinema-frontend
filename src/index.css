@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cinema-bg text-white font-sans antialiased overflow-x-hidden;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1F1F1F;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E50914;
+}
+
+/* Premium Styling Helpers */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFD700 50%, #C5A000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-red {
+  background: linear-gradient(135deg, #FFA3A3 0%, #E50914 60%, #99000A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Panels */
+.glass-panel {
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-gold {
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(255, 215, 0, 0.03);
+}
+
+.glass-panel-red {
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 9, 20, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(229, 9, 20, 0.03);
+}
+
+/* Custom glow utility */
+.glow-gold:hover {
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.glow-red:hover {
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.4);
+}
+
+/* Movie Card Poster Aspect Ratio */
+.poster-aspect {
+  aspect-ratio: 2 / 3;
+}
