@@ -1,150 +1,121 @@
-import api, { USE_MOCK } from './config';
-import { dbMock } from './dbMock';
-import {
-  normalizeCustomer, normalizeScreen, normalizeShowtime,
-  normalizeBooking, normalizeTicket
-} from './normalizer';
+import api from './config';
 
 export const bookingService = {
   // --- SCREENS ---
   getScreens: async () => {
-    if (USE_MOCK) return dbMock.getScreens();
-    const response = await api.get('/screens');
-    return (response.data || []).map(normalizeScreen);
+    const res = await api.get('/screens');
+    return res.data;
   },
   getScreenById: async (id) => {
-    if (USE_MOCK) return dbMock.getScreenById(id);
-    const response = await api.get(`/screens/${id}`);
-    return normalizeScreen(response.data);
+    const res = await api.get(`/screens/${id}`);
+    return res.data;
   },
   addScreen: async (screen) => {
-    if (USE_MOCK) return dbMock.addScreen(screen);
-    const response = await api.post('/screens', screen);
-    return response.data;
+    const res = await api.post('/screens', screen);
+    return res.data;
   },
   updateScreen: async (id, screen) => {
-    if (USE_MOCK) return dbMock.updateScreen(id, screen);
-    const response = await api.put(`/screens/${id}`, screen);
-    return response.data;
+    const res = await api.put(`/screens/${id}`, screen);
+    return res.data;
   },
   deleteScreen: async (id) => {
-    if (USE_MOCK) return dbMock.deleteScreen(id);
-    const response = await api.delete(`/screens/${id}`);
-    return response.data;
+    const res = await api.delete(`/screens/${id}`);
+    return res.data;
   },
 
   // --- SHOWTIMES ---
   getShowtimes: async () => {
-    if (USE_MOCK) return dbMock.getShowtimes();
-    const response = await api.get('/showtimes');
-    return (response.data || []).map(st => normalizeShowtime(st));
+    const res = await api.get('/showtimes');
+    return res.data;
   },
   getShowtimeById: async (id) => {
-    if (USE_MOCK) return dbMock.getShowtimeById(id);
-    const response = await api.get(`/showtimes/${id}`);
-    return normalizeShowtime(response.data);
+    const res = await api.get(`/showtimes/${id}`);
+    return res.data;
   },
   addShowtime: async (showtime) => {
-    if (USE_MOCK) return dbMock.addShowtime(showtime);
-    const response = await api.post('/showtimes', showtime);
-    return response.data;
+    const res = await api.post('/showtimes', showtime);
+    return res.data;
   },
   updateShowtime: async (id, showtime) => {
-    if (USE_MOCK) return dbMock.updateShowtime(id, showtime);
-    const response = await api.put(`/showtimes/${id}`, showtime);
-    return response.data;
+    const res = await api.put(`/showtimes/${id}`, showtime);
+    return res.data;
   },
   deleteShowtime: async (id) => {
-    if (USE_MOCK) return dbMock.deleteShowtime(id);
-    const response = await api.delete(`/showtimes/${id}`);
-    return response.data;
+    const res = await api.delete(`/showtimes/${id}`);
+    return res.data;
   },
 
   // --- CUSTOMERS ---
   getCustomers: async () => {
-    if (USE_MOCK) return dbMock.getCustomers();
-    const response = await api.get('/customers');
-    return (response.data || []).map(normalizeCustomer);
+    const res = await api.get('/customers');
+    return res.data;
   },
   getCustomerById: async (id) => {
-    if (USE_MOCK) return dbMock.getCustomerById(id);
-    const response = await api.get(`/customers/${id}`);
-    return normalizeCustomer(response.data);
+    const res = await api.get(`/customers/${id}`);
+    return res.data;
   },
   addCustomer: async (customer) => {
-    if (USE_MOCK) return dbMock.addCustomer(customer);
-    const response = await api.post('/customers', {
-      CustomerName: customer.name,
-      Phone: customer.phone,
-      CNIC: customer.cnic,
-      Email: customer.email
+    const res = await api.post('/customers', {
+      name: customer.name,
+      phone: customer.phone,
+      cnic: customer.cnic,
+      email: customer.email,
     });
-    return response.data;
+    return res.data;
   },
   updateCustomer: async (id, customer) => {
-    if (USE_MOCK) return dbMock.updateCustomer(id, customer);
-    const response = await api.put(`/customers/${id}`, {
-      CustomerName: customer.name,
-      Phone: customer.phone,
-      CNIC: customer.cnic,
-      Email: customer.email
+    const res = await api.put(`/customers/${id}`, {
+      name: customer.name,
+      phone: customer.phone,
+      cnic: customer.cnic,
+      email: customer.email,
     });
-    return response.data;
+    return res.data;
   },
   deleteCustomer: async (id) => {
-    if (USE_MOCK) return dbMock.deleteCustomer(id);
-    const response = await api.delete(`/customers/${id}`);
-    return response.data;
+    const res = await api.delete(`/customers/${id}`);
+    return res.data;
   },
 
   // --- BOOKINGS ---
   getBookings: async () => {
-    if (USE_MOCK) return dbMock.getBookings();
-    const response = await api.get('/bookings');
-    return (response.data || []).map(normalizeBooking);
+    const res = await api.get('/bookings');
+    return res.data;
   },
   getBookingById: async (id) => {
-    if (USE_MOCK) return dbMock.getBookingById(id);
-    const response = await api.get(`/bookings/${id}`);
-    return normalizeBooking(response.data);
+    const res = await api.get(`/bookings/${id}`);
+    return res.data;
   },
   createBooking: async (bookingData) => {
-    if (USE_MOCK) return dbMock.createBooking(bookingData);
-    const response = await api.post('/bookings', bookingData);
-    return response.data;
+    const res = await api.post('/bookings', bookingData);
+    return res.data;
   },
   deleteBooking: async (id) => {
-    if (USE_MOCK) return dbMock.deleteBooking(id);
-    const response = await api.delete(`/bookings/${id}`);
-    return response.data;
+    const res = await api.delete(`/bookings/${id}`);
+    return res.data;
   },
 
   // --- TICKETS ---
   getTickets: async () => {
-    if (USE_MOCK) return dbMock.getTickets();
-    const response = await api.get('/tickets');
-    return (response.data || []).map(normalizeTicket);
+    const res = await api.get('/tickets');
+    return res.data;
   },
   getTicketById: async (id) => {
-    if (USE_MOCK) return dbMock.getTicketById(id);
-    const response = await api.get(`/tickets/${id}`);
-    return normalizeTicket(response.data);
+    const res = await api.get(`/tickets/${id}`);
+    return res.data;
   },
   addTicket: async (ticket) => {
-    if (USE_MOCK) return dbMock.addTicket(ticket);
-    const response = await api.post('/tickets', ticket);
-    return response.data;
+    const res = await api.post('/tickets', ticket);
+    return res.data;
   },
   updateTicket: async (id, ticket) => {
-    if (USE_MOCK) return dbMock.updateTicket(id, ticket);
-    const response = await api.put(`/tickets/${id}`, ticket);
-    return response.data;
+    const res = await api.put(`/tickets/${id}`, ticket);
+    return res.data;
   },
   deleteTicket: async (id) => {
-    if (USE_MOCK) return dbMock.deleteTicket(id);
-    const response = await api.delete(`/tickets/${id}`);
-    return response.data;
-  }
+    const res = await api.delete(`/tickets/${id}`);
+    return res.data;
+  },
 };
 
 export default bookingService;

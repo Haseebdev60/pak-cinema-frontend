@@ -1,61 +1,49 @@
-import api, { USE_MOCK } from './config';
-import { dbMock } from './dbMock';
-import { normalizeConcession, normalizeOrder } from './normalizer';
+import api from './config';
 
 export const concessionService = {
   // --- CONCESSIONS ---
   getConcessions: async () => {
-    if (USE_MOCK) return dbMock.getConcessions();
-    const response = await api.get('/concessions');
-    return (response.data || []).map(normalizeConcession);
+    const res = await api.get('/concessions');
+    return res.data;
   },
   getConcessionById: async (id) => {
-    if (USE_MOCK) return dbMock.getConcessionById(id);
-    const response = await api.get(`/concessions/${id}`);
-    return normalizeConcession(response.data);
+    const res = await api.get(`/concessions/${id}`);
+    return res.data;
   },
   addConcession: async (concession) => {
-    if (USE_MOCK) return dbMock.addConcession(concession);
-    const response = await api.post('/concessions', concession);
-    return response.data;
+    const res = await api.post('/concessions', concession);
+    return res.data;
   },
   updateConcession: async (id, concession) => {
-    if (USE_MOCK) return dbMock.updateConcession(id, concession);
-    const response = await api.put(`/concessions/${id}`, concession);
-    return response.data;
+    const res = await api.put(`/concessions/${id}`, concession);
+    return res.data;
   },
   deleteConcession: async (id) => {
-    if (USE_MOCK) return dbMock.deleteConcession(id);
-    const response = await api.delete(`/concessions/${id}`);
-    return response.data;
+    const res = await api.delete(`/concessions/${id}`);
+    return res.data;
   },
 
   // --- ORDERS ---
   getOrders: async () => {
-    if (USE_MOCK) return dbMock.getOrders();
-    const response = await api.get('/orders');
-    return (response.data || []).map(normalizeOrder);
+    const res = await api.get('/orders');
+    return res.data;
   },
   getOrderById: async (id) => {
-    if (USE_MOCK) return dbMock.getOrderById(id);
-    const response = await api.get(`/orders/${id}`);
-    return normalizeOrder(response.data);
+    const res = await api.get(`/orders/${id}`);
+    return res.data;
   },
   addOrder: async (order) => {
-    if (USE_MOCK) return dbMock.addOrder(order);
-    const response = await api.post('/orders', order);
-    return response.data;
+    const res = await api.post('/orders', order);
+    return res.data;
   },
   updateOrder: async (id, order) => {
-    if (USE_MOCK) return dbMock.updateOrder(id, order);
-    const response = await api.put(`/orders/${id}`, order);
-    return response.data;
+    const res = await api.put(`/orders/${id}`, order);
+    return res.data;
   },
   deleteOrder: async (id) => {
-    if (USE_MOCK) return dbMock.deleteOrder(id);
-    const response = await api.delete(`/orders/${id}`);
-    return response.data;
-  }
+    const res = await api.delete(`/orders/${id}`);
+    return res.data;
+  },
 };
 
 export default concessionService;
