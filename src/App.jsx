@@ -18,7 +18,7 @@ import Analytics from './pages/admin/Analytics';
 
 export default function App() {
   return (
-    <Router basename="/cinema">
+    <Router>
       <Routes>
         {/* Customer Portal Routes */}
         <Route path="/" element={<Home />} />
