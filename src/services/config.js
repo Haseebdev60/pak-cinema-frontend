@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Toggle between simulated LocalStorage DB and the XAMPP PHP API
 // Set to false when connecting to the SQL Server via PHP APIs
-export const USE_MOCK = false;
+export const USE_MOCK = true;
 
 export const API_BASE_URL = 'http://localhost/pak-cinema-api';
 
